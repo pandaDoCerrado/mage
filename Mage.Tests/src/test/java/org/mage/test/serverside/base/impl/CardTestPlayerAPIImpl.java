@@ -31,6 +31,7 @@ import org.mage.test.player.PlayerAction;
 import org.mage.test.player.TestPlayer;
 import org.mage.test.serverside.base.CardTestAPI;
 import org.mage.test.serverside.base.MageTestPlayerBase;
+import org.mage.test.utils.CreateALiasTest;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -470,7 +471,15 @@ public abstract class CardTestPlayerAPIImpl extends MageTestPlayerBase implement
                 }
             }
         }
-    }
+
+        if (gameZone == Zone.GRAVEYARD) {
+            player.addAlias(CreateALiasTest.generateAlias(Zone.GRAVEYARD,cardName));
+        }else if (gameZone == Zone.HAND){
+            player.addAlias(CreateALiasTest.generateAlias(Zone.HAND,cardName));
+        }else if (gameZone == Zone.HAND){
+            player.addAlias(CreateALiasTest.generateAlias(Zone.EXILED,cardName));
+        }
+        }
 
     /**
      * Returns card list container for specified game zone and player.
